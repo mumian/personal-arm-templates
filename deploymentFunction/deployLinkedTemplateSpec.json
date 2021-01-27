@@ -1,0 +1,35 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "variables": {
+    "templatelinkID1": "[deployment().properties.templatelinkID]",
+    "templatelinkID2": "[deployment().properties.templatelink.id]"
+  },
+  "resources": [
+    {
+      "type": "Microsoft.Resources/deployments",
+      "apiVersion": "2020-06-01",
+      "name": "networkingDeployment",
+      "properties": {
+        "mode": "Incremental",
+        "templateLink": {
+          "id": "[resourceId('jgaoStorageSpec', 'Microsoft.Resources/templateSpecs/versions', 'storageSpec', '1.0a')]"
+        }
+      }
+    }
+  ],
+  "outputs": {
+    "deploymentOutput": {
+      "type": "object",
+      "value": "[deployment()]"
+    },
+    "id1": {
+      "type": "string",
+      "value": "[variables('templatelinkID1')]"
+    },
+    "id2": {
+      "type": "string",
+      "value": "[variables('templatelinkID2')]"
+    }
+  }
+}
