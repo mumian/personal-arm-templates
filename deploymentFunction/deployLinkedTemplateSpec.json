@@ -22,10 +22,6 @@
       "type": "object",
       "value": "[deployment()]"
     },
-    "id1": {
-      "type": "string",
-      "value": "[variables('templatelinkID1')]"
-    },
     "id2": {
       "type": "string",
       "value": "[variables('templatelinkID2')]"
